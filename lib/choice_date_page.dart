@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_application/select_date_page.dart';
 import 'package:travel_application/widget/choice_date_orange_button.dart';
 import 'package:travel_application/widget/choice_date_persons_button.dart';
 import 'package:travel_application/widget/choice_date_travel_days_button.dart';
@@ -14,7 +15,9 @@ class ChoiceDatePage extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(Icons.arrow_back_ios_new),
         ),
         title: Text(
@@ -26,7 +29,12 @@ class ChoiceDatePage extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          IconButton(onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SelectDatePage()),
+            );
+          }, icon: const Icon(Icons.more_vert)),
         ],
       ),
       body: Padding(

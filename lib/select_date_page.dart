@@ -158,7 +158,8 @@ class SelectDatePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              width: double.infinity, // Takes full width
+              width: double.infinity,
+              height: 50.0,
               child: ElevatedButton(
                 onPressed: () {},
                 style: ElevatedButton.styleFrom(

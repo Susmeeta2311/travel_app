@@ -8,7 +8,7 @@ class OrangeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+      padding: const EdgeInsets.symmetric(horizontal: 9, vertical: 5),
       decoration: BoxDecoration(
         color: Color(0xffFF7D0D),
         borderRadius: BorderRadius.circular(10),

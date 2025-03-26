@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:travel_application/map_page.dart';
 
 class TourDetailPage extends StatelessWidget {
   final PageController _pageController =
@@ -27,7 +28,10 @@ class TourDetailPage extends StatelessWidget {
               width: 24,
               height: 24,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MapPage()));
+            },
           ),
           IconButton(
             icon: Icon(Icons.more_vert, color: Colors.black),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_application/choice_date_page.dart';
 import 'package:travel_application/widget/orange_button.dart';
 import 'package:travel_application/widget/region_button.dart';
 import 'package:travel_application/widget/user_button.dart';
@@ -16,7 +17,7 @@ class DiscoverPage extends StatelessWidget {
           // Add back arrow
           icon: const Icon(Icons.arrow_back_ios_new),
           onPressed: () {
-            // Navigator.pop(context);
+            Navigator.pop(context);
           },
         ),
         title: const Text(
@@ -28,7 +29,12 @@ class DiscoverPage extends StatelessWidget {
           ),
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
+          IconButton(onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ChoiceDatePage()),
+            );
+          }, icon: const Icon(Icons.more_vert)),
         ],
       ),
       body: Padding(
@@ -42,22 +48,22 @@ class DiscoverPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(8), // Rounded corners
                 ),
                 contentPadding: const EdgeInsets.symmetric(
-                  vertical: 12.0,
+                  vertical: 14.0,
                   horizontal: 16.0,
                 ), // Adjust padding
                 prefixIcon: Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: SingleChildScrollView(
+                    // Enables horizontal scrolling
+                    scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       // Takes only required space
                       children: [
                         OrangeButton(text: "Europe"),
-                        // Use the OrangeButton widget
                         const SizedBox(width: 13.0),
-                        // Space between buttons
                         OrangeButton(text: "5 Star"),
-                        // Use the OrangeButton widget
+                        const SizedBox(width: 13.0),
                       ],
                     ),
                   ),

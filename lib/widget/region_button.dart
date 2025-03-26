@@ -10,7 +10,7 @@ class RegionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: isSelected ? Color(0xffFF7D0D) : Color(0xffEDEDED), // Selected button in orange
+        color: isSelected ? Color(0xffFF7D0D) : Colors.grey.shade300, // Selected button in orange
         borderRadius: BorderRadius.circular(10),
       ),
       alignment: Alignment.center,
