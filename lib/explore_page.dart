@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_application/tour_details_page.dart';
 import 'package:travel_application/widget/explore_page_my_location_widget.dart';
 
 class ExplorePage extends StatelessWidget {
@@ -18,20 +19,17 @@ class ExplorePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Image.asset(
-              "assets/icons/main_page/menu.png",
-              width: screenWidth * 0.07,
-            ),
-            Text(
-              "Explore",
-              style: TextStyle(
-                fontFamily: "Marcellus",
-                fontSize: 26.0,
-                fontWeight: FontWeight.w400,
+                "assets/icons/main_page/menu.png", width: screenWidth * 0.07),
+            Text("Explore",style: TextStyle(fontFamily: "Marcellus",fontSize: 26.0),),
+            InkWell(
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => TourDetailPage()));
+              },
+              child: Image.asset(
+                "assets/icons/main_page/profile.png",
+                height: screenHeight * 0.05,
               ),
-            ),
-            Image.asset(
-              "assets/icons/main_page/profile.png",
-              height: screenHeight * 0.05,
             ),
           ],
         ),

@@ -30,7 +30,7 @@ class ExplorePageMyLocationWidget extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 5,
             spreadRadius: 2,
             offset: Offset(0, 3),
@@ -57,7 +57,7 @@ class ExplorePageMyLocationWidget extends StatelessWidget {
                 begin: Alignment.bottomCenter,
                 end: Alignment.topCenter,
                 colors: [
-                  Colors.black.withOpacity(0.6),
+                  Colors.black.withValues(alpha: 0.6),
                   Colors.transparent,
                 ],
               ),

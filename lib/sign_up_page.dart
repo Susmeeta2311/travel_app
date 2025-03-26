@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:travel_application/sign_in_page.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignUpPage extends StatelessWidget {
+  SignUpPage({super.key});
 
-  @override
-  State<SignUpPage> createState() => _SignUpScreenState();
-}
-
-class _SignUpScreenState extends State<SignUpPage> {
-  // State variables declared here
-  bool isMaleSelected = true;
-
-  // for terms and conditions checkbox
-  bool isAccept = true;
+  // Using ValueNotifier instead of StatefulWidget variables
+  final ValueNotifier<bool> isMaleSelected = ValueNotifier(true);
+  final ValueNotifier<bool> isAccept = ValueNotifier(true);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // resizeToAvoidBottomInset: false,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: SingleChildScrollView(
@@ -27,13 +19,16 @@ class _SignUpScreenState extends State<SignUpPage> {
             children: [
               /// Top Logo
               Container(
-                margin: EdgeInsets.only(top: 60),
+                margin: const EdgeInsets.only(top: 60),
                 child: Stack(
                   children: [
-                    Image.asset('assets/logos/logo.png', width: 220, height: 100),
-          
-                    Padding(
-                      padding: const EdgeInsets.only(top: 75, left: 36),
+                    Image.asset(
+                      'assets/logos/logo.png',
+                      width: 220,
+                      height: 100,
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.only(top: 75, left: 36),
                       child: Text(
                         "Enjoy your travelling",
                         style: TextStyle(
@@ -46,9 +41,9 @@ class _SignUpScreenState extends State<SignUpPage> {
                   ],
                 ),
               ),
-          
-              SizedBox(height: 70),
-          
+
+              const SizedBox(height: 70),
+
               /// Title
               const Text(
                 'Sign Up',
@@ -58,261 +53,99 @@ class _SignUpScreenState extends State<SignUpPage> {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-          
-              const SizedBox(height: 150),
-          
+
+              const SizedBox(height: 130),
+
               /// Gender Checkbox field
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /// for male check box
-                  Container(
-                    height: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-          
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Male",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontFamily: "Gilroy-Medium",
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          SizedBox(width: 70),
-                          Container(
-                            width: 18,
-                            height: 18,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(6),
-                              border: Border.all(
-                                color: Colors.black12,
-                                width: 0.5,
-                              ),
-                              color:
-                                  isMaleSelected
-                                      ? Colors.red[50]
-                                      : Colors.transparent,
-                            ),
-                            child:
-                                isMaleSelected
-                                    ? Icon(
-                                      Icons.check,
-                                      size: 16,
-                                      color: Colors.red, // Red checkmark
-                                    )
-                                    : null,
-                          ),
-                        ],
-                      ),
+                  GestureDetector(
+                    onTap: () => isMaleSelected.value = true,
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: isMaleSelected,
+                      builder: (context, value, child) {
+                        return genderCheckbox("Male", value);
+                      },
                     ),
                   ),
-          
+
                   /// for female check box
-                  Container(
-                    height: 35,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      border: Border.all(
-                        color: Colors.black12,
-                        width: 1,
-                        style: BorderStyle.solid,
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Female",
-                            style: TextStyle(
-                              fontSize: 13,
-                              fontFamily: "Gilroy-Medium",
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                          SizedBox(width: 70),
-                          // Container(
-                          //   width: 18,
-                          //   height: 18,
-                          //   decoration: BoxDecoration(
-                          //     borderRadius: BorderRadius.circular(6),
-                          //     border: Border.all(
-                          //       color: Colors.black12,
-                          //       width: 0.5,
-                          //     ),
-                          //     color:
-                          //         isMaleSelected
-                          //             ? Colors.red[50]
-                          //             : Colors.transparent,
-                          //   ),
-                          //   child:
-                          //       isMaleSelected
-                          //           ? Icon(
-                          //             Icons.check,
-                          //             size: 16,
-                          //             color: Color(0xffFF7D0D), // Red checkmark
-                          //           )
-                          //           : null,
-                          // ),
-                        ],
-                      ),
+                  GestureDetector(
+                    onTap: () => isMaleSelected.value = false,
+                    child: ValueListenableBuilder<bool>(
+                      valueListenable: isMaleSelected,
+                      builder: (context, value, child) {
+                        return genderCheckbox("Female", !value);
+                      },
                     ),
                   ),
                 ],
               ),
-          
+
               const SizedBox(height: 20),
-          
-              /// Password field
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Password",
-                  style: TextStyle(fontSize: 15, color: Colors.black54),
-                ),
-              ),
-          
-              const SizedBox(height: 8),
-          
-              TextField(
-                decoration: InputDecoration(
-                  hintText: '*******',
-                  hintStyle: TextStyle(color: Colors.black),
-          
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 15,
-                  ),
-          
-                  // Adjust vertical padding
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    // Border when TextField is not focused
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black12,
-                      width: 1.0,
-                    ), // Custom color
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    // Border when TextField is focused
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black12,
-                      width: 1.0,
-                    ), // Custom color
-                  ),
-                  suffixIcon: const Icon(Icons.visibility_outlined),
-                ),
-              ),
-          
+
+              /// Email Field
+              fieldTitle("Email"),
+              inputField("johndoe@gmail.com"),
+
+              const SizedBox(height: 10),
+
+              /// Password Field
+              fieldTitle("Password"),
+              inputField("Password", isPassword: true),
+
               const SizedBox(height: 20),
-          
-              // Password field
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "Confirm Password",
-                  style: TextStyle(fontSize: 15, color: Colors.black54),
-                ),
-              ),
-          
-              const SizedBox(height: 8),
-          
-              TextField(
-                decoration: InputDecoration(
-                  hintText: '*******',
-                  hintStyle: TextStyle(color: Colors.black),
-          
-                  contentPadding: EdgeInsets.symmetric(
-                    vertical: 12,
-                    horizontal: 15,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    // Border when TextField is not focused
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black12,
-                      width: 1.0,
-                    ), // Custom color
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    // Border when TextField is focused
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(
-                      color: Colors.black12,
-                      width: 1.0,
-                    ), // Custom color
-                  ),
-                  suffixIcon: const Icon(Icons.visibility_outlined),
-                ),
-              ),
-          
+
+              /// Confirm Password Field
+              fieldTitle("Confirm Password"),
+              inputField("Confirm Password", isPassword: true),
+
               const SizedBox(height: 30),
-          
-              Row(
-                children: [
-                  /// terms and conditions checkbox
-                  Container(
-                    width: 18,
-                    height: 18,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(6),
-                      border: Border.all(color: Colors.black12, width: 0.5),
-                      color: isAccept ? Colors.red[50] : Colors.transparent,
-                    ),
-                    child:
-                        isAccept
-                            ? Icon(
-                              Icons.check,
-                              size: 16,
-                              color: Color(0xffFF7D0D),
-                            )
-                            : null,
-                  ),
-          
-                  const SizedBox(width: 12),
-          
-                  Text("I agree and accept the ", style: TextStyle(fontSize: 15)),
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "terms to use.",
-                      style: TextStyle(fontSize: 15, color: Color(0xffFF7D0D)),
-                    ),
-                  ),
-                ],
+
+              /// Terms and Conditions Checkbox
+              GestureDetector(
+                onTap: () => isAccept.value = !isAccept.value,
+                child: ValueListenableBuilder<bool>(
+                  valueListenable: isAccept,
+                  builder: (context, value, child) {
+                    return Row(
+                      children: [
+                        termsCheckbox(value),
+                        const SizedBox(width: 12),
+                        const Text(
+                          "I agree and accept the ",
+                          style:
+                          TextStyle(fontSize: 13, fontFamily: "Gilroy-Medium"),
+                        ),
+                        InkWell(
+                          onTap: () {},
+                          child: const Text(
+                            "terms to use.",
+                            style: TextStyle(fontSize: 15, color: Color(0xffFF7D0D)),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ),
-          
+
               const SizedBox(height: 15),
-          
-              // Sign Up button
+
+              /// Sign Up Button
               ElevatedButton(
                 onPressed: () {
-                  // Add sign-up logic here (e.g., save user data)
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginScreen()),
+                    MaterialPageRoute(
+                      builder: (context) => const LoginScreen(),
+                    ),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xffFF7D0D),
+                  backgroundColor: const Color(0xffFF7D0D),
                   minimumSize: const Size(double.infinity, 40),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
@@ -334,4 +167,116 @@ class _SignUpScreenState extends State<SignUpPage> {
       ),
     );
   }
+
+  /// Gender Checkbox UI
+  Widget genderCheckbox(String text, bool isSelected) {
+    return Container(
+      height: 55,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        border: Border.all(color: Colors.black12, width: 1),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+        child: Row(
+          children: [
+            Text(
+              text,
+              style: const TextStyle(
+                fontSize: 13,
+                fontFamily: "Gilroy-Medium",
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            const SizedBox(width: 70),
+            Container(
+              width: 18,
+              height: 18,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(6),
+                border: Border.all(color: Colors.black12, width: 0.5),
+                color: isSelected ? Colors.red[50] : Colors.transparent,
+              ),
+              child: isSelected
+                  ? const Icon(Icons.check, size: 16, color: Colors.red)
+                  : null,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  /// Field Title UI
+  Widget fieldTitle(String title) {
+    return Align(
+      alignment: Alignment.centerLeft,
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 15,
+          color: Colors.black54,
+          fontFamily: "Gilroy-Medium",
+        ),
+      ),
+    );
+  }
+
+  /// Input Field UI
+  Widget inputField(String hintText, {bool isPassword = false}) {
+    return TextField(
+      decoration: InputDecoration(
+        hintText: hintText,
+        hintStyle: const TextStyle(
+          color: Colors.grey,
+          fontFamily: "Gilroy-Medium",
+        ),
+        contentPadding: const EdgeInsets.symmetric(
+          vertical: 12,
+          horizontal: 15,
+        ),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Colors.black12,
+            width: 1.0,
+          ),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: const BorderSide(
+            color: Colors.black12,
+            width: 1.0,
+          ),
+        ),
+        suffixIcon: isPassword
+            ? const Icon(Icons.visibility_outlined)
+            : null,
+      ),
+    );
+  }
+
+  /// Terms Checkbox UI
+  Widget termsCheckbox(bool isChecked) {
+    return Container(
+      width: 18,
+      height: 18,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        border: Border.all(color: Colors.black12, width: 0.5),
+        color: isChecked ? Colors.red[50] : Colors.transparent,
+      ),
+      child: isChecked
+          ? const Icon(
+        Icons.check,
+        size: 16,
+        color: Color(0xffFF7D0D),
+      )
+          : null,
+    );
+  }
 }
+

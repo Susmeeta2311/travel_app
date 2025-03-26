@@ -16,6 +16,7 @@ dependencies:
   shared_preferences: ^2.5.2
   dotted_border: ^2.1.0
   table_calendar: ^3.2.0
+  smooth_page_indicator: ^1.2.1
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +52,13 @@ flutter:
     - assets/icons/explore/explore3.png
     - assets/icons/explore/explore4.png
     - assets/icons/explore/explore5.png
+    - assets/icons/tourdetails/notification.png
+    - assets/icons/tourdetails/cloud.png
+    - assets/icons/tourdetails/Air.png
+    - assets/icons/tourdetails/Bick.png
+    - assets/icons/tourdetails/Boat.png
+    - assets/icons/tourdetails/Car.png
+    - assets/icons/tourdetails/sun.png
     - assets/images/plane_image.png
     - assets/logos/logo.png
 
