@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_application/widget/explore_page_my_location_widget.dart';
 
 class ExplorePage extends StatelessWidget {
   const ExplorePage({super.key});
@@ -42,13 +43,34 @@ class ExplorePage extends StatelessWidget {
           children: [
             SizedBox(height: 30),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Adjust spacing
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              // Adjust spacing
               children: [
-                Image.asset("assets/icons/explore/explore1.png", width: 63, height: 63),
-                Image.asset("assets/icons/explore/explore2.png", width: 63, height: 63),
-                Image.asset("assets/icons/explore/explore3.png", width: 63, height: 63),
-                Image.asset("assets/icons/explore/explore4.png", width: 63, height: 63),
-                Image.asset("assets/icons/explore/explore5.png", width: 63, height: 63),
+                Image.asset(
+                  "assets/icons/explore/explore1.png",
+                  width: 63,
+                  height: 63,
+                ),
+                Image.asset(
+                  "assets/icons/explore/explore2.png",
+                  width: 63,
+                  height: 63,
+                ),
+                Image.asset(
+                  "assets/icons/explore/explore3.png",
+                  width: 63,
+                  height: 63,
+                ),
+                Image.asset(
+                  "assets/icons/explore/explore4.png",
+                  width: 63,
+                  height: 63,
+                ),
+                Image.asset(
+                  "assets/icons/explore/explore5.png",
+                  width: 63,
+                  height: 63,
+                ),
               ],
             ),
             SizedBox(height: 30),
@@ -58,6 +80,39 @@ class ExplorePage extends StatelessWidget {
                 fontFamily: "Gilroy-bold",
                 fontSize: 18.0,
                 fontWeight: FontWeight.w400,
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.02),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: [
+                  ExplorePageMyLocationWidget(
+                    screenHeight: screenHeight,
+                    screenWidth: screenWidth,
+                    title: "Abserian a edlcain",
+                    description:
+                        'Portugal there is so much more to discover, Read about the Azores new wave of eco travel..! ',
+                    location: "Sismbra,Libson",
+                    imageUrl:
+                        "https://www.tripsavvy.com/thmb/DPwcND4ULwQuBdwo34yNebfwgsA=/3936x2624/filters:fill(auto,1)/TAM_5392-5c79a296c9e77c0001e98e59.jpg",
+                    price: '3000',
+                  ),
+                  SizedBox(width: screenWidth * 0.04),
+                  ExplorePageMyLocationWidget(
+                    screenHeight: screenHeight,
+                    screenWidth: screenWidth,
+                    title: "Vietnam",
+                    price: "4000",
+
+                    description:
+                        'Portugal there is so much more to discover, Read about the Azores new wave of eco travel..!',
+                    location: "Rondom,Vietnam",
+                    imageUrl:
+                        "https://th.bing.com/th/id/OIP.H5SC2U9xooSNBCN7dltCzQHaEK?rs=1&pid=ImgDetMain",
+                  ),
+                ],
               ),
             ),
           ],
@@ -126,8 +181,6 @@ class ExplorePage extends StatelessWidget {
           ],
         ),
       ),
-
-
     );
   }
 }
