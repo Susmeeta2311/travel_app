@@ -1,0 +1,69 @@
+name: travel_application
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.7.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_svg: ^2.0.17
+  shared_preferences: ^2.5.2
+  dotted_border: ^2.1.0
+  table_calendar: ^3.2.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/icons/options.svg
+    - assets/icons/message.svg
+    - assets/icons/location.svg
+    - assets/icons/person.svg
+    - assets/icons/onboardingpage1/cube1.png
+    - assets/icons/onboardingpage1/objects1.png
+    - assets/icons/onboardingpage1/person1.png
+    - assets/icons/onboardingpage1/trees1.png
+    - assets/icons/onboardingpage1/cube.svg
+    - assets/icons/onboardingpage2/ball2.png
+    - assets/icons/onboardingpage2/clock2.png
+    - assets/icons/onboardingpage2/person2.png
+    - assets/icons/onboardingpage2/trees2.png
+    - assets/icons/onboardingpage3/bell3.png
+    - assets/icons/onboardingpage3/heart3.png
+    - assets/icons/onboardingpage3/objects3.png
+    - assets/icons/onboardingpage3/person3.png
+    - assets/icons/onboardingpage1/logo.png
+    - assets/icons/main_page/profile.png
+    - assets/icons/main_page/menu.png
+    - assets/icons/explore/explore1.png
+    - assets/icons/explore/explore2.png
+    - assets/icons/explore/explore3.png
+    - assets/icons/explore/explore4.png
+    - assets/icons/explore/explore5.png
+    - assets/images/plane_image.png
+    - assets/logos/logo.png
+
+
+  fonts:
+    - family: Marcellus
+      fonts:
+        - asset: assets/fonts/Marcellus-Regular.ttf
+
+    - family: Gilroy-Medium
+      fonts:
+        - asset: assets/fonts/Gilroy-Medium.ttf
+
+    - family: Gilroy-Bold
+      fonts:
+        - asset: assets/fonts/Gilroy-Bold.ttf
