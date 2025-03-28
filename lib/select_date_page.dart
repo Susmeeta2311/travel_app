@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:travel_application/upcoming_tour_page.dart';
 
 class SelectDatePage extends StatelessWidget {
   const SelectDatePage({super.key});
@@ -165,19 +166,27 @@ class SelectDatePage extends StatelessWidget {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffFF7D0D),
                   padding: const EdgeInsets.symmetric(
-                    vertical: 12, // Keep only vertical padding
+                    vertical: 12,
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8),
                   ),
                 ),
-                child: const Text(
-                  "Start Now Tour",
-                  style: TextStyle(
-                    fontSize: 16.5,
-                    color: Colors.white,
-                    fontFamily: "Gilroy-bold",
+                child: TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => UpcomingTourPage()),
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    textStyle: const TextStyle(
+                      fontSize: 16.5,
+                      fontFamily: "Gilroy-bold",
+                    ),
+                    foregroundColor: Colors.white, // Correct way to set text color
                   ),
+                  child: const Text("Start Now Tour"),
                 ),
               ),
             ),
