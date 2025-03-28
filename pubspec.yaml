@@ -59,6 +59,10 @@ flutter:
     - assets/icons/tourdetails/Boat.png
     - assets/icons/tourdetails/Car.png
     - assets/icons/tourdetails/sun.png
+    - assets/icons/profile_page/Vector.png
+    - assets/icons/profile_page/profile.png
+    - assets/icons/profile_page/calender.png
+    - assets/icons/profile_page/icon.png
     - assets/images/plane_image.png
     - assets/logos/logo.png
 

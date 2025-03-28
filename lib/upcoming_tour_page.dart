@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:travel_application/profile_page.dart';
+
 
 class UpcomingTourPage extends StatelessWidget {
   const UpcomingTourPage({super.key});
@@ -21,10 +23,10 @@ class UpcomingTourPage extends StatelessWidget {
         ),
         actions: [
           IconButton(onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => HotPlacePage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ProfilePage()),
+            );
           }, icon: const Icon(Icons.more_vert)),
         ],
       ),
